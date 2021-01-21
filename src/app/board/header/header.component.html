@@ -1,0 +1,21 @@
+<div class="header">
+    <mat-toolbar>
+        
+        <div *ngIf="user$ | async as user" class="pro-full-width" fxLayout="row" fxLayoutAlign="space-between center">
+            <div (click)="toHome()" class="pro-manager" fxLayout="row" fxLayoutAlign="space-between center">
+                <img class="logo" src="/assets/app_logo.jpeg" alt="">
+                <span>Pro Manager</span>
+            </div>
+
+            <div (click)="toUser()" class="user-infos" fxLayout="row" fxLayoutAlign="space-between center">
+                <div fxLayout="column" fxLayoutAlign="center center">
+                    <p>{{user.name}}</p>
+                    <p class="email">{{user.email}}</p>
+                </div>
+                <img class="profil-pic" src="/assets/backup_profile_pic.png" alt="">
+            </div>
+
+        </div>
+    
+    </mat-toolbar>
+</div>

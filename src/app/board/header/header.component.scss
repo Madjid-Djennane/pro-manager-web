@@ -1,0 +1,52 @@
+::ng-deep .mat-toolbar {
+    height: 55px;
+    background-color: white;
+    font: 500 14px/20px Roboto, "Helvetica Neue", sans-serif;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.profil-pic {
+    height: 45px;
+    width: 45px;
+}
+
+.logo {
+    height: 48px;
+    width: 48px;
+}
+
+.pro-full-width {
+    width: 100%;
+}
+
+.header {
+    box-shadow: 0 4px 2px -2px #f5f6f8;
+}
+
+.user-infos {
+    font-size: 15px;
+    width: 190px;
+    cursor: pointer;
+    
+    &:hover {
+        opacity: 0.6;
+    }
+}
+
+.email {
+    color: blue;
+}
+
+.pro-manager {
+    cursor: pointer;
+    font-size: 20px;;
+    &:hover {
+        transform: scale(1.02);
+        opacity: 0.9;
+    }
+}

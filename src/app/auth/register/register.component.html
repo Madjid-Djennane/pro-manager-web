@@ -1,0 +1,40 @@
+<div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
+
+    <mat-card class="box">
+        
+        <mat-card-header>
+          <mat-card-title>Register</mat-card-title>
+        </mat-card-header>
+    
+        <form [formGroup]="registerForm" class="pro-form">
+            <mat-card-content>
+                
+                <mat-form-field class="pro-full-width">
+                    <input matInput placeholder="name" formControlName="name">
+                </mat-form-field>
+
+                <mat-form-field class="pro-full-width">
+                  <input matInput placeholder="lastname" formControlName="lastname">
+                </mat-form-field>
+
+                <mat-form-field class="pro-full-width">
+                  <input matInput placeholder="email" formControlName="email">
+                </mat-form-field>
+
+                <mat-form-field class="pro-full-width">
+                  <input matInput type="password" placeholder="password" formControlName="password">
+                </mat-form-field>
+
+                <mat-form-field class="pro-full-width">
+                  <input matInput type="password" placeholder="confirm password" formControlName="confirmPassword">
+                </mat-form-field>
+
+            </mat-card-content>
+            
+            <button mat-stroked-button color="primary" class="pro-full-width" (click)="register()" [disabled]="!registerForm.valid">Register</button>
+        
+        </form>
+    
+    </mat-card>
+
+</div>
