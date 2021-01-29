@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { environment } from '../../environments/environment';
+import { environment } from '../../environments/environment.prod';
 import { User } from '../users/user';
 import { ApiResult } from '../_models/classes';
 
@@ -32,6 +32,7 @@ export class AuthService {
     }
 
     public login(params): Observable<ApiResult> {
+        console.log(this.API_BASE_URL);
         return this._http.post(`${this.API_BASE_URL}/login`, params).pipe(
             map((res: ApiResult) => {
                 localStorage.setItem('token', res.data.token);
