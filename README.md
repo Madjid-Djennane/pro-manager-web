@@ -1,5 +1,13 @@
 # ProManagerWeb
 
+## Run project
+
+1. Clone project: git clone https://github.com/Madjid-Djennane/pro-manager-web.git
+2. Move to project directory: cd pro-manager-web
+3. Checkout dev branch: git checkout dev
+4. Install dependencies: npm install
+5. Run project: npm run start
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.6.
 
 ## Development server
