@@ -6,12 +6,13 @@ import { UserRootComponent } from './user-root/user-root.component';
 import { ProfileComponent } from './profile/profile.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 @NgModule({
-  declarations: [UserRootComponent, ProfileComponent],
+  declarations: [UserRootComponent, ProfileComponent, EditUserComponent],
   imports: [
     CommonModule,
-    UsersRoutingModule,
+    // UsersRoutingModule,
     AngularMaterialModule,
     FlexLayoutModule
   ]

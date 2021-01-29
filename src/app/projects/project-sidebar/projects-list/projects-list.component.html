@@ -1,0 +1,26 @@
+<!-- <mat-accordion>
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Projects
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-list-item>
+        projet 1
+      </mat-list-item>
+      <mat-list-item>
+        projet 2
+      </mat-list-item>
+    </mat-expansion-panel>
+</mat-accordion>
+ -->
+
+
+<mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            Projets
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>projet 1</p>
+</mat-expansion-panel>

@@ -5,7 +5,7 @@ export const loadUser = createAction(
     '[User] Load_User'
 );
 
-export const editUserInfos = createAction(
-    '[User] Edit_User_Infos',
-    props<{ infos: User; }>()
+export const editUserdata = createAction(
+    '[User] Edit_User_data',
+    props<{ data: User; }>()
 );

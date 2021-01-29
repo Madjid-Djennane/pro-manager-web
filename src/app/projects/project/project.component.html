@@ -1,0 +1,51 @@
+<div fxLayout="column" fxLayoutAlign="space-around none" class="main-container">
+    <div fxLayout="row" fxLayoutAlign="end center">
+        <button routerLink="new" mat-stroked-button color="primary" >
+            <mat-icon>add</mat-icon>
+            <span class="add-button">Nouveau projet</span>
+        </button>
+    </div>
+
+    <div fxLayout="column" fxLayoutAlign="start center" style="height: 80%">
+        <div fxLayout="column" *ngIf="projects$ | async as projects; else noprojetcs" fxFill>
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <h2>Projets courants</h2>
+            </div>
+            <mat-divider></mat-divider>
+            
+            <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="32px" fxLayoutAlign="center">
+                <ng-container *ngFor="let project of projects">
+                    <mat-card (click)="toTasks(project._id)">
+                        <div fxLayout="row" fxLayoutAlign="start center" class="project-name-wrapper">
+                            <mat-icon class="project-icon">group_work_outline</mat-icon>
+                            <span class="project-name">{{project.name}}</span>
+                        </div>
+                        <mat-divider></mat-divider>
+                        <div fxLayout="row" fxLayoutAlign="start center" class="project-body">
+                            <p>
+                                {{project.description | slice:0:200 }} ...
+                            </p>
+                        </div>
+                        <div>
+                        </div>
+                    </mat-card>
+                </ng-container>
+            </div>
+
+        </div>
+    </div>
+
+    <ng-template #noprojetcs>
+        <div fxLayout="column" fxLayoutAlign="center center">
+            <div>
+                <h1>Aucun projet trouvé !</h1>
+            </div>
+            <div>
+                <img src="/assets/folder_gray.png" width="400" alt="">
+            </div>
+        </div>
+    </ng-template>
+
+</div>
+
+

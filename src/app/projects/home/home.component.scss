@@ -1,0 +1,24 @@
+.container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 93%;
+    box-shadow: 0 -2px 2px -2px #333;
+    
+}
+
+mat-sidenav {
+    width: 250px;
+}
+
+.bottom-to-top {
+    border: 0px;
+    border-right: 1px;
+    border-style: solid;
+    border-image:
+    linear-gradient(to top, #c1c1c1, rgba(0, 0, 0, 0)) 1 100%
+}
+
+.menu-button {
+    border-bottom: grey solid 1px;
+}

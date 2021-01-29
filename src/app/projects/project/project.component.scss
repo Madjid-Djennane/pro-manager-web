@@ -1,0 +1,36 @@
+.project {
+    white-space: nowrap;
+}
+
+mat-card {
+    &:hover{
+        transform: scale(1.01);
+        cursor: pointer;   
+    }
+    margin: 16px 0px;
+    width: 300px;
+    min-height: 100px;
+    
+}
+
+.project-name {
+    margin-left: 10px;
+    font-size: 20px;
+    font-weight: 450;
+}
+
+.project-name-wrapper {
+    margin-bottom: 10px;
+}
+
+.add-button {
+    font-size: 20px;
+}
+
+.project-icon {
+    color: rgb(175, 174, 174);
+}
+
+.project-body {
+    margin-top: 20px;
+}

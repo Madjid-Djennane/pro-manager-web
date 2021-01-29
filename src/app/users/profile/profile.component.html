@@ -1,1 +1,31 @@
-<p>profile works!</p>
+<div *ngIf="user$ | async as user" class="main-wrapper profile-wrapper" fxLayout="row" fxLayoutAlign="center center">
+
+    <mat-card class="box">
+      <mat-card-header>
+        <mat-card-title>
+            <div fxLayout="row" fxFill="100" fxLayoutAlign="center center">
+                <div fxFill="70" fxLayoutAlign="end center">
+                    Profile
+                </div>
+                <div fxFill="30" fxLayoutAlign="center center">
+                    <button (click)="editUser()" mat-button>
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                </div>
+
+            </div>
+        </mat-card-title>
+        
+      </mat-card-header>
+  
+      <div fxLayout="column" fxLayoutAlign="">
+          <div fxLayout="row" fxLayoutAlign="center center">
+            <img src="/assets/backup_profile_pic.png" width="100" alt="">
+          </div>
+          <div fxLayout="row" fxFill="50" fxLayoutAlign="space-between center"><span>Prénom :</span> {{user.name}}</div>
+          <div fxLayout="row" fxFill="50" fxLayoutAlign="space-between center"><span>Nom :</span> {{user.lastname}}</div>
+          <div fxLayout="row" fxFill="50" fxLayoutAlign="space-between center"><span>Email :</span> {{user.email}}</div>
+      </div>
+    </mat-card>
+  
+</div>

@@ -9,12 +9,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
-  declarations: [HeaderComponent, MainComponent],
+  declarations: [],
   imports: [
-    CommonModule,
-    BoardRoutingModule,
-    AngularMaterialModule,
-    FlexLayoutModule
+    BoardRoutingModule
   ]
 })
 export class BoardModule { }

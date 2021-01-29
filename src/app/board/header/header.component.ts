@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 
 interface AppState {
     user: {
-        infos: User
+        data: User
     };
 }
 
@@ -17,7 +17,7 @@ interface AppState {
 })
 export class HeaderComponent implements OnInit {
 
-    public user$: Observable<User> = this._store.select(state => state.user.infos);
+    public user$: Observable<User> = this._store.select(state => state.user.data);
 
     constructor(
         private _store: Store<AppState>,
@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit {
     }
 
     toUser() {
-        this._router.navigate(['/users']);
+        this._router.navigate(['/users/profile']);
     }
 
     toHome() {

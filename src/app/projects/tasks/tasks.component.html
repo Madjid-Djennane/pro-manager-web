@@ -1,0 +1,178 @@
+<div fxLayout="column" fxLayoutAlign="space-around none" class="main-container" *ngIf="project$ | async as project">
+    <div fxLayout="row" fxLayoutAlign="end center">
+        <button (click)="newTask(project)" mat-stroked-button color="primary" >
+            <mat-icon>add</mat-icon>
+            <span class="add-button">Nouvelle tâche</span>
+        </button>
+    </div>
+
+    <div fxLayout="column" fxLayoutAlign="start none" style="height: 80%">
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <h2>{{project.name}}</h2>
+        </div>
+        <mat-divider></mat-divider>
+
+        <div fxLayout="row" class="main-tasks">
+            <div class="row-container">
+                <h2>En attente</h2>
+
+                <div
+                  cdkDropList
+                  id="pending"
+                  #backlogList="cdkDropList"
+                  [cdkDropListData]="tasks.pending"
+                  [cdkDropListConnectedTo]="['in_progress', 'review', 'completed', 'wont_fix']"
+                  class="task-list"
+                  (cdkDropListDropped)="drop($event)">
+                  <div class="task-box" *ngFor="let task of tasks.pending" cdkDrag>
+                      <div fxLayout="column" fxLayoutAlign="center none" fxFill>
+                          <div fxLayout="row" fxLayoutAlign="space-between center" fxFill class="el-mar">
+                            <h3 class="task-title">{{task.title}}</h3>
+                            <button mat-button (click)="update(task, project)"><mat-icon>edit</mat-icon></button>
+                          </div>
+                          <div fxLayout="row" fxLayoutAlign="space-between center" fxFill class="el-mar">
+                            {{task.description | slice:0:200}}
+                          </div>
+                          <div fxLayout="row" fxLayoutAlign="space-between center" class="el-mar">
+                              <mat-chip-list >
+                                <mat-chip [color]="getChipColor(task.category)" selected>{{task.category}}</mat-chip>
+                                <mat-chip [color]="getChipColor(task.priority)" selected>{{task.priority}}</mat-chip>
+                              </mat-chip-list>
+
+                              <div></div>
+                          </div>
+                      </div>  
+                  </div>
+                </div>
+            </div>
+
+
+            <div class="row-container">
+                <h2>En cours</h2>
+              
+                <div
+                  cdkDropList
+                  id="in_progress"
+                  #todoList="cdkDropList"
+                  [cdkDropListData]="tasks.in_progress"
+                  [cdkDropListConnectedTo]="['pending', 'review', 'completed', 'wont_fix']"
+                  class="task-list"
+                  (cdkDropListDropped)="drop($event)">
+                  <div class="task-box" *ngFor="let task of tasks.in_progress" cdkDrag>
+                    <div fxLayout="column" fxLayoutAlign="center none" fxFill>
+                        <div fxLayout="row" fxLayoutAlign="space-between center" fxFill class="el-mar">
+                            <h3 class="task-title">{{task.title}}</h3>
+                            <button mat-button (click)="update(task, project)"><mat-icon>edit</mat-icon></button>
+                          </div>
+                          <div fxLayout="row" fxLayoutAlign="space-between center" fxFill class="el-mar">
+                            {{task.description | slice:0:200}}
+                          </div>
+                          <div fxLayout="row" fxLayoutAlign="space-between center" class="el-mar">
+                            <mat-chip-list >
+                              <mat-chip [color]="getChipColor(task.category)" selected>{{task.category}}</mat-chip>
+                              <mat-chip [color]="getChipColor(task.priority)" selected>{{task.priority}}</mat-chip>
+                            </mat-chip-list>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+              
+            <div class="row-container">
+                <h2>Review</h2>
+              
+                <div
+                  cdkDropList
+                  id="review"
+                  #doneList="cdkDropList"
+                  [cdkDropListData]="tasks.review"
+                  [cdkDropListConnectedTo]="['pending', 'in_progress', 'completed', 'wont_fix']"
+                  class="task-list"
+                  (cdkDropListDropped)="drop($event)">
+                  <div class="task-box" *ngFor="let task of tasks.review" cdkDrag>
+                    <div fxLayout="column" fxLayoutAlign="center none" fxFill>
+                        <div fxLayout="row" fxLayoutAlign="space-between center" fxFillclass="el-mar" >
+                            <h3 class="task-title">{{task.title}}</h3>
+                            <button mat-button (click)="update(task, project)"><mat-icon>edit</mat-icon></button>
+                          </div>
+                          <div fxLayout="row" fxLayoutAlign="space-between center" fxFill class="el-mar">
+                            {{task.description | slice:0:200}}
+                          </div>
+                          <div fxLayout="row" fxLayoutAlign="space-between center" class="el-mar">
+                            <mat-chip-list >
+                              <mat-chip [color]="getChipColor(task.category)" selected>{{task.category}}</mat-chip>
+                              <mat-chip [color]="getChipColor(task.priority)" selected>{{task.priority}}</mat-chip>
+                            </mat-chip-list>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            
+            <div class="row-container">
+                <h2>Terminé</h2>
+              
+                <div
+                  cdkDropList
+                  id="completed"
+                  #doneList="cdkDropList"
+                  [cdkDropListData]="tasks.completed"
+                  [cdkDropListConnectedTo]="['pending', 'in_progress', 'review', 'wont_fix']"
+                  class="task-list"
+                  (cdkDropListDropped)="drop($event)">
+                  <div class="task-box" *ngFor="let task of tasks.completed" cdkDrag>
+                    <div fxLayout="column" fxLayoutAlign="center none" fxFill>
+                        <div fxLayout="row" fxLayoutAlign="space-between center" fxFill class="el-mar">
+                            <h3 class="task-title">{{task.title}}</h3>
+                            <button mat-button (click)="update(task, project)"><mat-icon>edit</mat-icon></button>
+                          </div>
+                          <div fxLayout="row" fxLayoutAlign="space-between center" fxFill class="el-mar">
+                            {{task.description | slice:0:200}}
+                          </div>
+                          <div fxLayout="row" fxLayoutAlign="space-between center" class="el-mar">
+                            <mat-chip-list >
+                              <mat-chip [color]="getChipColor(task.category)" selected>{{task.category}}</mat-chip>
+                              <mat-chip [color]="getChipColor(task.priority)" selected>{{task.priority}}</mat-chip>
+                            </mat-chip-list>
+                        </div>
+                        </div>
+                  </div>
+                </div>
+            </div>
+
+            <div class="row-container">
+                <h2>Won't fix</h2>
+              
+                <div
+                  cdkDropList
+                  id="wont_fix"
+                  #doneList="cdkDropList"
+                  [cdkDropListData]="tasks.wont_fix"
+                  [cdkDropListConnectedTo]="['pending', 'in_progress', 'review', 'completed']"
+                  class="task-list"
+                  (cdkDropListDropped)="drop($event)">
+                  <div class="task-box" *ngFor="let task of tasks.wont_fix" cdkDrag>
+                    <div fxLayout="column" fxLayoutAlign="center none" fxFill>
+                        <div fxLayout="row" fxLayoutAlign="space-between center" fxFill class="el-mar">
+                            <h3 class="task-title">{{task.title}}</h3>
+                            <button mat-button (click)="update(task, project)"><mat-icon>edit</mat-icon></button>
+                          </div>
+                          <div fxLayout="row" fxLayoutAlign="space-between center" fxFill class="el-mar">
+                            {{task.description | slice:0:200}}
+                          </div>
+                          <div fxLayout="row" fxLayoutAlign="space-between center" class="el-mar">
+                            <mat-chip-list >
+                              <mat-chip [color]="getChipColor(task.category)" selected>{{task.category}}</mat-chip>
+                              <mat-chip [color]="getChipColor(task.priority)" selected>{{task.priority}}</mat-chip>
+                            </mat-chip-list>
+                        </div>
+                        </div>
+                  </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

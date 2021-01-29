@@ -1,0 +1,54 @@
+<div fxLayout="column" fxLayoutAlign="center center" class="main-container">
+    <div>
+        <h1>Créer un Nouveau projet</h1>
+    </div>
+    <mat-divider></mat-divider>
+    
+    <form [formGroup]="projectForm" class="pro-form" fxLayout="column">
+
+        <mat-form-field appearance="outline" class="pro-full-width">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="name" formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="pro-full-width">
+            <mat-label>Description</mat-label>
+            <textarea matInput minlength="1" rows="13" formControlName="description">
+            </textarea>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="pro-full-width">
+            <mat-label>Members</mat-label>
+
+            <mat-chip-list #chipList>
+                <mat-chip *ngFor="let member of selectedMembers" [selectable]="selectable"
+                         [removable]="removable" (removed)="remove(member)">
+                    {{member.name}}
+                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                </mat-chip>
+
+                <input
+                    matInput 
+                    placeholder="Members" 
+                    [formControl]="membersControl" 
+                    [matChipInputFor]="chipList"
+                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                    [matAutocomplete]="auto"
+                >
+            </mat-chip-list>
+            
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option" (click)="add(option)">
+                  {{option}}
+                </mat-option>
+            </mat-autocomplete>
+
+        </mat-form-field>
+
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+            <button mat-stroked-button color="primary" (click)="submit()" [disabled]="!projectForm.valid">Valider</button>
+            <button mat-stroked-button routerLink="../" color="warn">Annuler</button>
+        </div>
+
+    </form>
+</div>

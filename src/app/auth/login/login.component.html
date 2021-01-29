@@ -2,7 +2,7 @@
 
     <mat-card class="box">
       <mat-card-header>
-        <mat-card-title>Sign In</mat-card-title>
+        <mat-card-title>Connexion</mat-card-title>
       </mat-card-header>
   
       <form class="pro-form" [formGroup]="loginForm">
@@ -20,7 +20,9 @@
         <button mat-stroked-button color="primary" class="pro-full-width" [disabled]="!loginForm.valid" (click)="login()">Sign-in</button>
       </form>
 
-      <a href="/auth/register">créer un compte</a>
+      <div >
+        <a href="/auth/register">créer un compte</a>
+      </div>
     </mat-card>
   
   </div>

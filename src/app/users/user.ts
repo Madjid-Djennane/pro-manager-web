@@ -1,3 +1,4 @@
+import { Project } from '../projects/project';
 export class User {
 
     _id: string;
@@ -5,6 +6,7 @@ export class User {
     lastname: string;
     role: string;
     email: string;
+    projects: Project[];
     createdAt: Date;
     updatedAt: Date;
 

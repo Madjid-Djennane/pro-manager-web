@@ -25,4 +25,20 @@ export class UsersService {
                 })
             );
     }
+
+    public getUserProjects(user_id: string): Observable<ApiResult> {
+        return this._http.get(`${this.API_BASE_URL}/projects/${user_id}`).pipe(
+            map((res: ApiResult) => {
+                return res;
+            })
+        );
+    }
+
+    public getUsers(): Observable<ApiResult> {
+        return this._http.get(`${this.API_BASE_URL}/users/all`).pipe(
+            map((res: ApiResult) => {
+                return res;
+            })
+        );
+    }
 }

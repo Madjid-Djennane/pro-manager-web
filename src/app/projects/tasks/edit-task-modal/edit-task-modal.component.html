@@ -1,0 +1,48 @@
+<div fxLayout="column" fxLayoutAlign="space-between none" class="main">
+    <form [formGroup]="taskForm" class="pro-form" fxLayout="column">
+        <mat-form-field appearance="outline" class="pro-full-width">
+            <mat-label>Title</mat-label>
+            <input matInput placeholder="title" formControlName="title">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="pro-full-width">
+            <mat-label>Description</mat-label>
+            <textarea matInput minlength="1" rows="6" formControlName="description">
+            </textarea>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Priority</mat-label>
+            <mat-select formControlName="priority">
+              <mat-option *ngFor="let p of tasksPriority" [value]="p">
+                {{p}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Assigned to</mat-label>
+            <mat-select formControlName="assignedTo">
+              <mat-option *ngFor="let member of members" [value]="member._id">
+                {{member.name}} {{member.lastname}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        
+        <mat-form-field appearance="outline">
+            <mat-label>Category</mat-label>
+            <mat-select formControlName="category">
+                <mat-option *ngFor="let c of tasksCategories" [value]="c">
+                    {{c}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+            <button mat-stroked-button color="primary" (click)="submit()" [disabled]="!taskForm.valid">Modifier</button>
+            <button mat-stroked-button color="warn" (click)="close(false)">Annuler</button>
+        </div>
+
+    </form>
+</div>

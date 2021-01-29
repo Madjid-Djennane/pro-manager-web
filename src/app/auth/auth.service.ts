@@ -11,7 +11,7 @@ import { ApiResult } from '../_models/classes';
   providedIn: 'root'
 })
 export class AuthService {
-    API_BASE_URL = `${environment.PRO_MANAGER_API_URL}/api/v1`;
+    API_BASE_URL = `${environment.PRO_MANAGER_API_URL}/api/v1/users`;
 
     constructor(
       private jwtHelper: JwtHelperService,
@@ -28,11 +28,11 @@ export class AuthService {
     }
 
     public createAccount(user: User): Observable<any> {
-        return this._http.post(`${this.API_BASE_URL}/users/`, { user });
+        return this._http.post(`${this.API_BASE_URL}/`, { user });
     }
 
     public login(params): Observable<ApiResult> {
-        return this._http.post(`${this.API_BASE_URL}/users/login`, params).pipe(
+        return this._http.post(`${this.API_BASE_URL}/login`, params).pipe(
             map((res: ApiResult) => {
                 localStorage.setItem('token', res.data.token);
                 return res;

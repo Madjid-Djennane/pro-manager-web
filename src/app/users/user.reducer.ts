@@ -3,19 +3,19 @@ import * as UserActions from './user.action';
 import { User } from './user';
 
 export interface State {
-    infos: User;
+    data: User;
 }
 
 export const initialState: State = {
-    infos: null,
+    data: null
 };
 
 const _userReducer = createReducer(
     initialState,
-    on(UserActions.editUserInfos, (state, { infos }) => (
+    on(UserActions.editUserdata, (state, { data }) => (
         {
             ...state,
-            infos
+            data
         }
     ))
 );

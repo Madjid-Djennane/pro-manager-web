@@ -14,7 +14,7 @@ export class UserEffect {
         ofType(userActions.loadUser),
         mergeMap(() => this._usersService.getUser(this.jwtHelper.decodeToken(localStorage.getItem('token'))._id)
             .pipe(
-                map(user => userActions.editUserInfos({ infos: user })),
+                map(user => userActions.editUserdata({ data: user })),
                 catchError(() => EMPTY)
             ))
     ));
